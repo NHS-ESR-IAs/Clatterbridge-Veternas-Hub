@@ -476,52 +476,24 @@
                             </ol>
                         </div>
 
-                        <p class="mb-2">Click the button below to access the ESR portal:</p>
-                        <div class="mb-3">
+                        <p class="mb-3">To record or update your status, click the button below to log in to My ESR, then follow the 4 simple steps above:</p>
+
+                        <div class="mb-4">
                             <a class="btn-nhs-primary"
-                                href="https://my.esr.nhs.uk/dashboard/web/the-clatterbridge-cancer-centre-nhs-foundation-trust/dashboard?p_p_id=nhsesrglspersonalinformationportlet_WAR_nhsesrglspersonalinformationportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&_nhsesrglspersonalinformationportlet_WAR_nhsesrglspersonalinformationportlet_jakarta.portlet.action=getPersonalDetails"
-                                id="VetPersonalDetails" target="_blank" rel="noopener noreferrer" role="button">
-                                Open ESR Personal Information Form &rarr;
+                                href="https://my.esr.nhs.uk/dashboard/"
+                                id="VetPersonalDetails" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                role="button">
+                                Open My ESR Dashboard &rarr;
                             </a>
                         </div>
 
-                        <!-- Dynamic VPD Indicator & Switcher -->
-                        <div class="p-3 bg-light rounded border mt-3">
-                            <div class="d-flex flex-wrap align-items-center justify-content-between">
-                                <span class="small text-muted">
-                                    Target Trust / VPD: <strong id="currentVpdDisplay" class="text-primary font-monospace">the-clatterbridge-cancer-centre-nhs-foundation-trust</strong>
-                                </span>
-                                <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2" onclick="toggleVpdSelector();">
-                                    Switch Trust / VPD &#x25BE;
-                                </button>
-                            </div>
-
-                            <div id="vpdSelectorBox" style="display: none;" class="mt-3 pt-3 border-top">
-                                <label for="customVpdInput" class="small font-weight-bold mb-1 text-dark">Enter or Select Trust VPD Slug:</label>
-                                <div class="input-group input-group-sm mb-2">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-white">.../dashboard/web/</span>
-                                    </div>
-                                    <input type="text" id="customVpdInput" class="form-control" placeholder="trust-vpd-slug" aria-label="Trust VPD Slug">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button" onclick="saveCustomVpd();">Apply</button>
-                                    </div>
-                                </div>
-                                <div class="small text-muted mb-2">
-                                    Quick presets:
-                                    <a href="#" onclick="setQuickVpd('the-clatterbridge-cancer-centre-nhs-foundation-trust'); return false;" class="badge badge-light border mr-1 text-primary">Clatterbridge</a>
-                                    <a href="#" onclick="setQuickVpd('business-services-authority'); return false;" class="badge badge-light border mr-1 text-primary">NHSBSA</a>
-                                    <a href="#" onclick="setQuickVpd('liverpool-university-hospitals-nhs-foundation-trust'); return false;" class="badge badge-light border mr-1 text-primary">LUFT</a>
-                                    <a href="#" onclick="setQuickVpd('sheffield-childrens-nhs-foundation-trust'); return false;" class="badge badge-light border text-primary">Sheffield</a>
-                                </div>
-                                <p class="small text-muted mb-0" style="font-size: 0.8rem;">
-                                    Tip: You can also pass <code>?vpd=your-trust-slug</code> in the URL (e.g. from an ESR portlet link) to auto-configure this for everyone at your Trust.
-                                </p>
-                            </div>
-
-                            <div class="small text-muted mt-2 pt-2 border-top">
-                                Experiencing session errors? Open the generic <a href="https://my.esr.nhs.uk/dashboard/" target="_blank" rel="noopener noreferrer" class="font-weight-bold">ESR Dashboard &rarr;</a> and navigate to Personal Information &gt; Wellbeing.
-                            </div>
+                        <div class="notice-card mt-4">
+                            <h6 class="font-weight-bold text-primary mb-1">Why record your status?</h6>
+                            <p class="small text-muted mb-0">
+                                Recording your status helps our Trust understand the size and needs of our Armed Forces community, ensures you receive relevant support, and helps us uphold our commitments under the Armed Forces Covenant.
+                            </p>
                         </div>
                     </main>
                 </div>
@@ -743,92 +715,8 @@
             }
         }
 
-        // ==========================================
-        // Dynamic ESR VPD & Personal Information Link
-        // ==========================================
-        var DEFAULT_VPD = "the-clatterbridge-cancer-centre-nhs-foundation-trust";
-
-        function getDetectedVpd() {
-            var urlParams = new URLSearchParams(window.location.search);
-            // 1. Direct query parameter: ?vpd=...
-            if (urlParams.get("vpd")) {
-                return urlParams.get("vpd").trim();
-            }
-            // 2. Auto-detect from ESR Referrer if linked from dashboard
-            if (document.referrer) {
-                var match = document.referrer.match(/\/dashboard\/web\/([^/?#]+)/i);
-                if (match && match[1] && match[1].toLowerCase() !== "guest") {
-                    return match[1].trim();
-                }
-            }
-            // 3. User saved preference in localStorage
-            try {
-                var stored = localStorage.getItem("esr_vpd");
-                if (stored) return stored.trim();
-            } catch (e) {}
-
-            // 4. Default Trust
-            return DEFAULT_VPD;
-        }
-
-        function updateEsrPersonalDetailsLink(vpd) {
-            if (!vpd) vpd = getDetectedVpd();
-            
-            var urlParams = new URLSearchParams(window.location.search);
-            var pAuth = urlParams.get("p_auth") || "";
-            var pAuthQuery = pAuth ? "&p_auth=" + encodeURIComponent(pAuth) : "";
-
-            var directUrl = "https://my.esr.nhs.uk/dashboard/web/" + encodeURIComponent(vpd) + 
-                "/dashboard?p_p_id=nhsesrglspersonalinformationportlet_WAR_nhsesrglspersonalinformationportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&_nhsesrglspersonalinformationportlet_WAR_nhsesrglspersonalinformationportlet_jakarta.portlet.action=getPersonalDetails" + pAuthQuery;
-
-            var btn = document.getElementById("VetPersonalDetails");
-            if (btn) {
-                btn.setAttribute("href", directUrl);
-            }
-
-            var displayEl = document.getElementById("currentVpdDisplay");
-            if (displayEl) {
-                displayEl.textContent = vpd;
-            }
-
-            var inputEl = document.getElementById("customVpdInput");
-            if (inputEl) {
-                inputEl.value = vpd;
-            }
-        }
-
-        function toggleVpdSelector() {
-            var box = document.getElementById("vpdSelectorBox");
-            if (box) {
-                box.style.display = (box.style.display === "none" || box.style.display === "") ? "block" : "none";
-            }
-        }
-
-        function saveCustomVpd() {
-            var inputEl = document.getElementById("customVpdInput");
-            if (inputEl && inputEl.value.trim()) {
-                var newVpd = inputEl.value.trim().toLowerCase().replace(/[^a-z0-9\-_]/g, "");
-                try {
-                    localStorage.setItem("esr_vpd", newVpd);
-                } catch (e) {}
-                updateEsrPersonalDetailsLink(newVpd);
-                toggleVpdSelector();
-            }
-        }
-
-        function setQuickVpd(presetVpd) {
-            try {
-                localStorage.setItem("esr_vpd", presetVpd);
-            } catch (e) {}
-            updateEsrPersonalDetailsLink(presetVpd);
-            toggleVpdSelector();
-        }
-
-        // Handle URL hash and dynamic VPD initialization on load
+        // Handle URL hash on load
         window.addEventListener("DOMContentLoaded", function () {
-            // Initialize dynamic ESR link
-            updateEsrPersonalDetailsLink();
-
             var hash = window.location.hash.replace("#", "");
             var validSections = ["Vet_LP", "Vet_Status", "Vet_Policy", "Vet_SCT", "Vet_AFC"];
             if (hash && validSections.indexOf(hash) !== -1) {

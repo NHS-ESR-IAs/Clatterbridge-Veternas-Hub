@@ -10,6 +10,7 @@ A standalone web application and ESR signposting portlet providing information a
 .
 ├── index.html                   # Standalone Veterans Hub website
 ├── launcher.html                # ESR Signposting Portlet snippet (Pure HTML/CSS, No JS)
+├── launcher-liferay.html        # ESR Liferay Dashboard boilerplate preview
 ├── portlet.html                 # Original legacy ESR portlet (preserved for reference)
 ├── assets/                      # Local assets (downloaded and uncoupled from CodePen)
 │   ├── LUFT_Veterans.png        # Veterans banner & logo image
@@ -45,23 +46,20 @@ Use the code in [`launcher.html`](launcher.html) when adding or updating a custo
 ESR portlets no longer allow JavaScript execution. `launcher.html` is built with **100% pure HTML and scoped inline CSS** without any JavaScript. It presents the standard NHS Veterans branding card and a button that opens the standalone website in a new tab.
 
 ### Deployment Instructions for ESR:
-1. Host this project (e.g., via **GitHub Pages** under `https://nhs-esr-ias.github.io/Clatterbridge-Veterans-Hub/` or your Trust's internal web server).
+1. Host this project (e.g., via **GitHub Pages** under `https://nhs-esr-ias.github.io/Clatterbridge-Veternas-Hub/` or your Trust's internal web server).
 2. Open [`launcher.html`](launcher.html).
-3. Adjust the `href` in the launch button to point to your live site URL. You can append `?vpd=your-trust-slug` to automatically configure the link for your Trust (e.g. `?vpd=the-clatterbridge-cancer-centre-nhs-foundation-trust` or `?vpd=business-services-authority`).
+3. The links are pre-configured to point to `https://nhs-esr-ias.github.io/Clatterbridge-Veternas-Hub/`.
 4. Copy the entire HTML/CSS snippet from `launcher.html` and paste it into your ESR Custom Portlet.
 
 ---
 
-## ⚡ 3. Dynamic Multi-VPD Support
+## ⚡ 3. Recording Veteran Status in ESR
 
-The "Open ESR Personal Information Form" link dynamically resolves across any NHS Trust / VPD without modifying the source code:
+To eliminate session errors and avoid cross-VPD authentication blocks, the Hub provides clear 4-step guidance directly to staff:
+1. Log in to **My ESR** (`https://my.esr.nhs.uk/dashboard/`).
+2. Navigate to **Personal Information** / My ESR.
+3. Select the **Wellbeing** tab.
+4. Complete the Armed Forces questions and submit.
 
-1. **URL Parameter (`?vpd=...`)**:
-   - Simply pass `index.html?vpd=<trust-slug>` (e.g., from `launcher.html` or an intranet bookmark).
-2. **ESR Referrer Auto-Detection**:
-   - If a user clicks into the site directly from their ESR dashboard, the hub parses the Trust slug from `document.referrer` automatically.
-3. **Interactive On-Page Switcher**:
-   - Users or administrators can click **"Switch Trust / VPD"** on the form page to select from quick presets (Clatterbridge, NHSBSA, LUFT, Sheffield) or enter a custom Trust slug. The selection is remembered in `localStorage`.
-4. **Universal Fallback**:
-   - If direct portlet actions are blocked by session rules, a direct link to the standard ESR Dashboard (`https://my.esr.nhs.uk/dashboard/`) is always available.
+The action button links directly to `https://my.esr.nhs.uk/dashboard/` so users from any Trust can log in without encountering expired CSRF tokens or permissions issues.
 

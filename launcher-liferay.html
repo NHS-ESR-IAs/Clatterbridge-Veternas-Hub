@@ -1,20 +1,374 @@
-<!-- 
-  =============================================================================
-  ESR SIGNPOSTING MINI PORTLET (PURE HTML + INLINE CSS - NO JAVASCRIPT REQUIRED)
-  =============================================================================
-  This snippet is designed to be pasted directly into an ESR Custom Portlet.
-  Because ESR no longer supports JavaScript in portlets, this snippet contains
-  no JS and simply signposts/links users out to the external Veterans Hub website.
+<!DOCTYPE html>
+<html lang="en" class="ltr yui3-js-enabled">
 
-  CONFIGURATION:
-  1. The banner image is pre-encoded as base64 and embedded directly in the
-     HTML snippet (total file size: ~801 KB, well under the 1 MB limit), so
-     no external image hosting or ESR media uploads are required!
-  2. All links are configured to point directly to your live Veterans Hub:
-     https://nhs-esr-ias.github.io/Clatterbridge-Veternas-Hub/
-  =============================================================================
--->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESR Portal - Liferay Dashboard Preview</title>
+    <!-- Bootstrap 4 for grid layout -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
+    <style>
+        /* ========================================================= */
+        /* LIFERAY PORTAL & NHS ESR THEME SIMULATION STYLES          */
+        /* ========================================================= */
+        :root {
+            --nhs-blue: #005eb8;
+            --nhs-dark-blue: #003087;
+            --nhs-light-blue: #41b6e6;
+            --esr-bg: #e9eef2;
+            --esr-nav-bg: #004b91;
+            --portlet-border: #ccd6dd;
+            --portlet-header-bg: #f2f5f8;
+            --portlet-header-border: #d0dbe2;
+        }
+
+        body {
+            background-color: var(--esr-bg);
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #212529;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Top Simulation Notice Banner */
+        .simulation-banner {
+            background-color: #212b32;
+            color: #ffb81c;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #ffb81c;
+        }
+
+        .simulation-banner a {
+            color: #ffffff;
+            text-decoration: underline;
+            margin-left: 12px;
+        }
+
+        /* ESR Header Bar */
+        .esr-header {
+            background-color: var(--nhs-blue);
+            color: #ffffff;
+            padding: 10px 24px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .esr-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nhs-logo-box {
+            background-color: #ffffff;
+            color: var(--nhs-blue);
+            font-weight: 900;
+            font-size: 20px;
+            letter-spacing: 0.5px;
+            padding: 2px 10px;
+            border-radius: 2px;
+            line-height: 1.2;
+        }
+
+        .esr-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 0.3px;
+        }
+
+        .esr-subtitle {
+            font-size: 12px;
+            opacity: 0.85;
+            margin: 0;
+        }
+
+        .esr-user-info {
+            text-align: right;
+            font-size: 13px;
+        }
+
+        .esr-user-name {
+            font-weight: 700;
+        }
+
+        .esr-trust-name {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        /* Liferay Navigation Bar */
+        .liferay-nav {
+            background-color: var(--esr-nav-bg);
+            border-bottom: 3px solid var(--nhs-light-blue);
+        }
+
+        .liferay-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0 20px;
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .liferay-nav li a {
+            display: block;
+            padding: 11px 18px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            white-space: nowrap;
+            border-top: 3px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .liferay-nav li a:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+        }
+
+        .liferay-nav li.active a {
+            background-color: #ffffff;
+            color: var(--nhs-blue);
+            border-top: 3px solid var(--nhs-light-blue);
+        }
+
+        /* Breadcrumbs */
+        .esr-breadcrumbs {
+            padding: 8px 24px;
+            font-size: 12px;
+            color: #64748b;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .esr-breadcrumbs a {
+            color: #005eb8;
+            text-decoration: none;
+        }
+
+        /* Liferay Layout & Portlet Containers */
+        .portal-layout-container {
+            max-width: 1380px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* Liferay Portlet Component Styles */
+        .portlet-boundary {
+            margin-bottom: 22px;
+        }
+
+        .portlet {
+            background: #ffffff;
+            border: 1px solid var(--portlet-border);
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .portlet-topper {
+            background-color: var(--portlet-header-bg);
+            border-bottom: 1px solid var(--portlet-header-border);
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .portlet-title {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 700;
+            color: #1e3a5f;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .portlet-topper-toolbar {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 12px;
+        }
+
+        .portlet-icon {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .portlet-content {
+            padding: 16px;
+        }
+
+        .portlet-content-container {
+            width: 100%;
+        }
+
+        .portlet-body {
+            width: 100%;
+        }
+
+        /* Additional Mock Portlets for Context */
+        .mock-user-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 8px 0;
+        }
+
+        .mock-avatar {
+            width: 54px;
+            height: 54px;
+            background: #e2e8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #64748b;
+            font-weight: bold;
+        }
+
+        .mock-stat-badge {
+            display: inline-block;
+            background: #e8f4fd;
+            color: #005eb8;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .announcement-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .announcement-item:last-child {
+            border-bottom: none;
+        }
+
+        .announcement-date {
+            font-size: 11px;
+            color: #94a3b8;
+        }
+
+        .announcement-title {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #005eb8;
+            margin: 2px 0;
+        }
+
+        /* ESR Footer */
+        .esr-footer {
+            background-color: #212b32;
+            color: #94a3b8;
+            padding: 24px;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .esr-footer a {
+            color: #ffffff;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Simulation Header Notice -->
+    <aside class="simulation-banner" aria-label="Preview Notice">
+        <div>
+            <span>&#9432; LIFERAY PORTAL PREVIEW:</span>
+            <span> This page simulates how the Veterans signposting launcher portlet appears within the NHS ESR Dashboard.</span>
+        </div>
+        <div>
+            <a href="launcher.html" target="_blank">View Raw Snippet</a>
+            <a href="index.html" target="_blank">Open Standalone Hub</a>
+        </div>
+    </aside>
+
+    <!-- Top NHS ESR Branding Header -->
+    <header class="esr-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="esr-logo-container">
+                <span class="nhs-logo-box">NHS</span>
+                <div>
+                    <h1 class="esr-title">Electronic Staff Record</h1>
+                    <p class="esr-subtitle">My ESR &mdash; Employee Self Service Portal</p>
+                </div>
+            </div>
+
+            <div class="esr-user-info d-none d-md-block">
+                <div class="esr-user-name">Welcome, Colleague</div>
+                <div class="esr-trust-name">The Clatterbridge Cancer Centre NHS Foundation Trust</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Liferay Navigation Tabs -->
+    <nav class="liferay-nav" aria-label="Portal Navigation">
+        <ul>
+            <li class="active"><a href="#">My Dashboard</a></li>
+            <li><a href="#">My Personal Information</a></li>
+            <li><a href="#">My Pay &amp; Rewards</a></li>
+            <li><a href="#">My Learning</a></li>
+            <li><a href="#">My Appraisals</a></li>
+            <li><a href="#">Trust Documents</a></li>
+        </ul>
+    </nav>
+
+    <!-- Breadcrumb Bar -->
+    <div class="esr-breadcrumbs">
+        <span><a href="#">Portal Home</a> &gt; <a href="#">The Clatterbridge Cancer Centre</a> &gt; <strong>Staff Dashboard</strong></span>
+    </div>
+
+    <!-- Main Liferay 2-Column Dashboard Layout -->
+    <div class="portal-layout-container">
+        <div class="row">
+
+            <!-- ======================================================== -->
+            <!-- COLUMN 1: THE VETERANS LAUNCHER PORTLET                  -->
+            <!-- ======================================================== -->
+            <div class="col-lg-5 col-md-6 portlet-column portlet-column-first">
+
+                <!-- Liferay Portlet Boundary -->
+                <div class="portlet-boundary portlet-boundary_veterans_hub_WAR_customportlet_">
+                    <div id="p_p_id_veterans_hub_">
+                        <section class="portlet" id="portlet_veterans_hub">
+                            
+                            <!-- Liferay Portlet Topper (Header) -->
+                            <header class="portlet-topper">
+                                <h2 class="portlet-title">
+                                    <span>&#127894;&#65039;</span>
+                                    <span class="portlet-title-text">HM Forces Veterans</span>
+                                </h2>
+                                <menu class="portlet-topper-toolbar" aria-label="Portlet Controls">
+                                    <span class="portlet-icon" title="Refresh">&#10227;</span>
+                                    <span class="portlet-icon" title="Minimize">&#9644;</span>
+                                    <span class="portlet-icon" title="Options">&#x22EE;</span>
+                                </menu>
+                            </header>
+
+                            <!-- Liferay Portlet Content -->
+                            <div class="portlet-content">
+                                <div class="portlet-content-container">
+                                    <div class="portlet-body">
 <style>
     .vet-portlet-container {
         display: flex;
@@ -167,3 +521,97 @@
         </div>
     </div>
 </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ======================================================== -->
+            <!-- COLUMN 2: SURROUNDING ESR DASHBOARD PORTLETS             -->
+            <!-- ======================================================== -->
+            <div class="col-lg-7 col-md-6 portlet-column portlet-column-last">
+
+                <!-- Personal Information Summary Portlet -->
+                <div class="portlet-boundary">
+                    <section class="portlet">
+                        <header class="portlet-topper">
+                            <h2 class="portlet-title">
+                                <span>&#128100;</span>
+                                <span class="portlet-title-text">My Personal Information</span>
+                            </h2>
+                            <menu class="portlet-topper-toolbar">
+                                <span class="portlet-icon">&#x22EE;</span>
+                            </menu>
+                        </header>
+                        <div class="portlet-content">
+                            <div class="mock-user-card">
+                                <div class="mock-avatar">CC</div>
+                                <div>
+                                    <h6 class="mb-0 font-weight-bold">NHS Trust Employee</h6>
+                                    <span class="text-muted small">Employee Number: 84920194 &bull; The Clatterbridge Cancer Centre</span>
+                                </div>
+                            </div>
+                            <hr class="my-2">
+                            <div class="d-flex justify-content-between align-items-center py-2">
+                                <div>
+                                    <span class="font-weight-bold d-block small">Wellbeing &amp; Armed Forces Status</span>
+                                    <span class="small text-muted">Record your military veteran, reservist, or cadet volunteer details</span>
+                                </div>
+                                <span class="mock-stat-badge">Wellbeing Tab</span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Trust Announcements Portlet -->
+                <div class="portlet-boundary">
+                    <section class="portlet">
+                        <header class="portlet-topper">
+                            <h2 class="portlet-title">
+                                <span>&#128227;</span>
+                                <span class="portlet-title-text">Trust Announcements</span>
+                            </h2>
+                            <menu class="portlet-topper-toolbar">
+                                <span class="portlet-icon">&#x22EE;</span>
+                            </menu>
+                        </header>
+                        <div class="portlet-content">
+                            <div class="announcement-item">
+                                <span class="announcement-date">28 September 2026</span>
+                                <h6 class="announcement-title">Armed Forces Covenant Employer Recognition</h6>
+                                <p class="small text-muted mb-0">Learn more about our Trust's pledges and support for veteran colleagues and reservists via our dedicated hub.</p>
+                            </div>
+                            <div class="announcement-item">
+                                <span class="announcement-date">24 September 2026</span>
+                                <h6 class="announcement-title">Service Champion Training Sessions</h6>
+                                <p class="small text-muted mb-0">Upcoming CPD-accredited training via MS Teams for staff wishing to support our Armed Forces community.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ESR Footer -->
+    <footer class="esr-footer">
+        <p class="mb-2">&copy; 2026 NHS Electronic Staff Record (ESR) &bull; IBM / Oracle EBS / Liferay Portal Architecture</p>
+        <div>
+            <a href="#">Accessibility</a>
+            <a href="#">Privacy Notice</a>
+            <a href="#">Terms &amp; Conditions</a>
+            <a href="#">ESR Support Hub</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
