@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HM Forces Veterans Hub</title>
+    <!-- Bootstrap 4.6.2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- Google Fonts for crisp typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Frutiger:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --nhs-blue: #005eb8;
+            --nhs-dark-blue: #003087;
+            --nhs-bright-blue: #0072c6;
+            --nhs-light-blue: #41b6e6;
+            --nhs-dark-pink: #7c2855;
+            --nhs-warm-yellow: #ffb81c;
+            --nhs-dark-grey: #425563;
+            --nhs-mid-grey: #768692;
+            --nhs-pale-grey: #e8edee;
+            --nhs-white: #ffffff;
+        }
+
+        body {
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f0f4f5;
+            color: #212b32;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Top NHS style header strip */
+        .nhs-header-strip {
+            background-color: var(--nhs-blue);
+            color: #ffffff;
+            padding: 12px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nhs-header-title {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nhs-badge {
+            background: #ffffff;
+            color: var(--nhs-blue);
+            font-weight: 900;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Container & Shell */
+        .portal-wrapper {
+            max-width: 1200px;
+            margin: 24px auto;
+            padding: 0 15px;
+        }
+
+        .portal-card {
+            background: #ffffff;
+            border: 1px solid #d8dde0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Header block */
+        .Layout1 {
+            grid-area: 1 / 1 / 2 / 3;
+            padding: 18px 24px;
+            background: linear-gradient(135deg, #0072c6 0%, #005eb8 100%);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            border-bottom: 3px solid #41B6E6;
+        }
+
+        .Layout1 .Logo {
+            float: left;
+            max-height: 75px;
+            width: auto;
+            margin-right: 20px;
+            border-radius: 4px;
+            background: #ffffff;
+            padding: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        .Layout1 h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* Layout Grid */
+        .LayoutParent {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            grid-template-rows: auto 1fr;
+            min-height: 620px;
+        }
+
+        /* Sidebar Navigation */
+        .Layout3 {
+            grid-area: 2 / 1 / 3 / 2;
+            padding: 24px 18px;
+            background-color: #f8fafc;
+            border-right: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-heading {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #64748b;
+            letter-spacing: 0.8px;
+            margin-bottom: 4px;
+            padding-left: 4px;
+        }
+
+        .Layout3 .btn-nav {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 14px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            line-height: 1.35;
+            color: #005eb8;
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            transition: all 0.15s ease-in-out;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .Layout3 .btn-nav:hover {
+            background-color: #0072c6;
+            color: #ffffff;
+            border-color: #0072c6;
+            box-shadow: 0 2px 6px rgba(0, 114, 198, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .Layout3 .btn-nav.active {
+            background-color: #005eb8;
+            color: #ffffff;
+            border-color: #005eb8;
+            border-left: 5px solid #ffb81c;
+            box-shadow: 0 2px 6px rgba(0, 94, 184, 0.3);
+        }
+
+        /* Main Content */
+        .Layout4 {
+            grid-area: 2 / 2 / 3 / 3;
+            padding: 28px 32px;
+            background-color: #ffffff;
+            color: #212b32;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .Layout4 h4 {
+            color: #005eb8;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .Layout4 p {
+            margin-bottom: 1.15rem;
+            color: #334155;
+            font-size: 1.02rem;
+        }
+
+        .Layout4 ul {
+            padding-left: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .Layout4 ul li {
+            margin-bottom: 0.5rem;
+            color: #334155;
+        }
+
+        /* Sidenav overlay & section switching */
+        .sidenav {
+            display: none;
+            width: 100%;
+        }
+
+        .sidenav.active-section {
+            display: block;
+        }
+
+        /* PDF Viewer */
+        .VetIframe {
+            position: relative;
+            height: 640px;
+            width: 100%;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            margin-top: 15px;
+            background: #f8fafc;
+        }
+
+        .pdf-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f1f5f9;
+            padding: 10px 16px;
+            border: 1px solid #cbd5e1;
+            border-bottom: none;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            margin-top: 15px;
+        }
+
+        .pdf-toolbar+.VetIframe {
+            margin-top: 0;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        /* Action Buttons */
+        .btn-nhs-primary {
+            background-color: #0072c6;
+            border-color: #0072c6;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .btn-nhs-primary:hover {
+            background-color: #005eb8;
+            border-color: #005eb8;
+            color: #ffffff;
+            box-shadow: 0 2px 6px rgba(0, 94, 184, 0.3);
+            text-decoration: none;
+        }
+
+        .callout-box {
+            background: #f0f7ff;
+            border-left: 4px solid #0072c6;
+            padding: 16px 20px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 20px;
+        }
+
+        .notice-card {
+            background-color: #eef7fc;
+            border: 1px solid #bce1f4;
+            border-radius: 6px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        .portal-footer {
+            text-align: center;
+            padding: 20px 0;
+            color: #64748b;
+            font-size: 0.88rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 860px) {
+            .LayoutParent {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .Layout1 {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+                padding: 16px;
+            }
+
+            .Layout1 .Logo {
+                float: none;
+                margin-right: 0;
+                max-height: 65px;
+            }
+
+            .Layout3 {
+                border-right: none;
+                border-bottom: 1px solid #e2e8f0;
+                padding: 16px;
+            }
+
+            .Layout4 {
+                padding: 20px 18px;
+            }
+
+            .VetIframe {
+                height: 480px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NHS Header Strip -->
+    <header class="nhs-header-strip">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <h1 class="nhs-header-title">
+                <span class="nhs-badge">NHS</span>
+                <span>Clatterbridge Veterans Hub</span>
+            </h1>
+            <span class="d-none d-md-inline text-light" style="font-size: 0.9rem;">Supporting Armed Forces Veterans
+                &amp; Reservists</span>
+        </div>
+    </header>
+
+    <div class="portal-wrapper">
+        <div class="portal-card">
+
+            <!-- ============================================== -->
+            <!-- 1. Veterans Landing Page (Vet_LP)               -->
+            <!-- ============================================== -->
+            <section class="sidenav active-section" id="Vet_LP">
+                <div class="LayoutParent">
+                    <div class="Layout1">
+                        <img class="Logo" src="assets/LUFT_Veterans.png" alt="Veterans Hub Logo">
+                        <h3>HM Forces Veterans</h3>
+                    </div>
+
+                    <nav class="Layout3" aria-label="Veterans Hub Navigation">
+                        <div class="nav-heading">Navigation Menu</div>
+                        <button type="button" class="btn-nav active"
+                            onclick="navigateToSection('Vet_LP');">Home</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_Status');">Recording
+                            Veteran Status in ESR</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_Policy');">Armed Forces
+                            Reservist Policy</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_SCT');">Service Champion
+                            Training</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_AFC');">Armed Forces
+                            Covenant &amp; ERS</button>
+                    </nav>
+
+                    <main class="Layout4">
+                        <div class="callout-box">
+                            <h4 class="mb-2">Welcome to the HM Forces Veterans Hub</h4>
+                            <p class="mb-0 font-weight-bold text-dark">
+                                As part of the NHS family, we recognise the invaluable skills and experiences that you,
+                                our colleagues who are HM Forces Veterans, bring to our organisation.
+                            </p>
+                        </div>
+
+                        <p>
+                            In this dedicated Veterans Hub, you will find information, links, and resources designed to
+                            support our Veteran colleagues, Reservists, Cadet Force Adult Volunteers, and their families
+                            across our Trust.
+                        </p>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6 mb-3">
+                                <div class="notice-card h-100 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <h5 class="text-primary font-weight-bold">Recording Your Status in ESR</h5>
+                                        <p class="small text-muted">Ensuring we can provide tailored support by updating
+                                            your status on the Wellbeing form.</p>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary mt-2"
+                                        onclick="navigateToSection('Vet_Status');">Learn More &rarr;</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="notice-card h-100 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <h5 class="text-primary font-weight-bold">Armed Forces Reservist Policy</h5>
+                                        <p class="small text-muted">Read our full policy on leave entitlement and
+                                            support for reservist duties.</p>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary mt-2"
+                                        onclick="navigateToSection('Vet_Policy');">View Policy &rarr;</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="notice-card h-100 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <h5 class="text-primary font-weight-bold">Service Champion Training</h5>
+                                        <p class="small text-muted">CPD-accredited training delivered via MS Teams to
+                                            become an Armed Forces Champion.</p>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary mt-2"
+                                        onclick="navigateToSection('Vet_SCT');">View Training &rarr;</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="notice-card h-100 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <h5 class="text-primary font-weight-bold">Armed Forces Covenant</h5>
+                                        <p class="small text-muted">Our organizational pledge and the Defence Employer
+                                            Recognition Scheme (ERS).</p>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary mt-2"
+                                        onclick="navigateToSection('Vet_AFC');">View Covenant &rarr;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- 2. Updating Veteran Status in ESR (Vet_Status) -->
+            <!-- ============================================== -->
+            <section class="sidenav" id="Vet_Status">
+                <div class="LayoutParent">
+                    <div class="Layout1">
+                        <img class="Logo" src="assets/LUFT_Veterans.png" alt="Veterans Hub Logo">
+                        <h3>Recording Veteran Status in ESR</h3>
+                    </div>
+
+                    <nav class="Layout3" aria-label="Veterans Hub Navigation">
+                        <div class="nav-heading">Navigation Menu</div>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_LP');">Home</button>
+                        <button type="button" class="btn-nav active"
+                            onclick="navigateToSection('Vet_Status');">Recording Veteran Status in ESR</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_Policy');">Armed Forces
+                            Reservist Policy</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_SCT');">Service Champion
+                            Training</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_AFC');">Armed Forces
+                            Covenant &amp; ERS</button>
+                    </nav>
+
+                    <main class="Layout4">
+                        <h4>Recording Your Veteran Status in ESR</h4>
+                        <p>
+                            In order for us to provide the support you need where necessary, we would appreciate it if
+                            you take the time to record your Veterans status on the <strong>Wellbeing Form</strong>.
+                        </p>
+                        <p>
+                            This also applies to <strong>Armed Forces Family Members</strong>, <strong>Armed Forces
+                                Reservists</strong>, and <strong>Cadet Armed Forces Adult Volunteers</strong>.
+                        </p>
+
+                        <div class="callout-box my-4">
+                            <h5 class="font-weight-bold text-primary mb-2">How to update in ESR:</h5>
+                            <ol class="mb-0 pl-3">
+                                <li class="mb-2">Log in to the <strong>NHS Electronic Staff Record (ESR)</strong>
+                                    portal.</li>
+                                <li class="mb-2">Navigate to your <strong>Personal Information</strong> / My ESR
+                                    section.</li>
+                                <li class="mb-2">Select the <strong>Wellbeing</strong> tab.</li>
+                                <li>Complete the Armed Forces questions and submit your details.</li>
+                            </ol>
+                        </div>
+
+                        <p class="mb-2">Click the button below to access the ESR portal:</p>
+                        <div class="mb-3">
+                            <a class="btn-nhs-primary"
+                                href="https://my.esr.nhs.uk/dashboard/web/the-clatterbridge-cancer-centre-nhs-foundation-trust/dashboard?p_p_id=nhsesrglspersonalinformationportlet_WAR_nhsesrglspersonalinformationportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&_nhsesrglspersonalinformationportlet_WAR_nhsesrglspersonalinformationportlet_jakarta.portlet.action=getPersonalDetails"
+                                id="VetPersonalDetails" target="_blank" rel="noopener noreferrer" role="button">
+                                Open ESR Personal Information Form &rarr;
+                            </a>
+                        </div>
+
+                        <!-- Dynamic VPD Indicator & Switcher -->
+                        <div class="p-3 bg-light rounded border mt-3">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                <span class="small text-muted">
+                                    Target Trust / VPD: <strong id="currentVpdDisplay" class="text-primary font-monospace">the-clatterbridge-cancer-centre-nhs-foundation-trust</strong>
+                                </span>
+                                <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2" onclick="toggleVpdSelector();">
+                                    Switch Trust / VPD &#x25BE;
+                                </button>
+                            </div>
+
+                            <div id="vpdSelectorBox" style="display: none;" class="mt-3 pt-3 border-top">
+                                <label for="customVpdInput" class="small font-weight-bold mb-1 text-dark">Enter or Select Trust VPD Slug:</label>
+                                <div class="input-group input-group-sm mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-white">.../dashboard/web/</span>
+                                    </div>
+                                    <input type="text" id="customVpdInput" class="form-control" placeholder="trust-vpd-slug" aria-label="Trust VPD Slug">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button" onclick="saveCustomVpd();">Apply</button>
+                                    </div>
+                                </div>
+                                <div class="small text-muted mb-2">
+                                    Quick presets:
+                                    <a href="#" onclick="setQuickVpd('the-clatterbridge-cancer-centre-nhs-foundation-trust'); return false;" class="badge badge-light border mr-1 text-primary">Clatterbridge</a>
+                                    <a href="#" onclick="setQuickVpd('business-services-authority'); return false;" class="badge badge-light border mr-1 text-primary">NHSBSA</a>
+                                    <a href="#" onclick="setQuickVpd('liverpool-university-hospitals-nhs-foundation-trust'); return false;" class="badge badge-light border mr-1 text-primary">LUFT</a>
+                                    <a href="#" onclick="setQuickVpd('sheffield-childrens-nhs-foundation-trust'); return false;" class="badge badge-light border text-primary">Sheffield</a>
+                                </div>
+                                <p class="small text-muted mb-0" style="font-size: 0.8rem;">
+                                    Tip: You can also pass <code>?vpd=your-trust-slug</code> in the URL (e.g. from an ESR portlet link) to auto-configure this for everyone at your Trust.
+                                </p>
+                            </div>
+
+                            <div class="small text-muted mt-2 pt-2 border-top">
+                                Experiencing session errors? Open the generic <a href="https://my.esr.nhs.uk/dashboard/" target="_blank" rel="noopener noreferrer" class="font-weight-bold">ESR Dashboard &rarr;</a> and navigate to Personal Information &gt; Wellbeing.
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- 3. Armed Forces Reservist Policy (Vet_Policy)  -->
+            <!-- ============================================== -->
+            <section class="sidenav" id="Vet_Policy">
+                <div class="LayoutParent">
+                    <div class="Layout1">
+                        <img class="Logo" src="assets/LUFT_Veterans.png" alt="Veterans Hub Logo">
+                        <h3>Armed Forces Reservist Policy</h3>
+                    </div>
+
+                    <nav class="Layout3" aria-label="Veterans Hub Navigation">
+                        <div class="nav-heading">Navigation Menu</div>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_LP');">Home</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_Status');">Recording
+                            Veteran Status in ESR</button>
+                        <button type="button" class="btn-nav active" onclick="navigateToSection('Vet_Policy');">Armed
+                            Forces Reservist Policy</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_SCT');">Service Champion
+                            Training</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_AFC');">Armed Forces
+                            Covenant &amp; ERS</button>
+                    </nav>
+
+                    <main class="Layout4">
+                        <h4>Armed Forces Reservist Policy</h4>
+                        <p>
+                            This policy is provided so that Trust employees who are members of the Armed Forces
+                            Reserves, or any staff who want to become a reservist, are supported to do so.
+                        </p>
+                        <ul>
+                            <li>This policy ensures that staff are supported to carry out reservist duties.</li>
+                            <li>Managers are equipped to support requests from staff to join reserve forces and support
+                                staff where possible during the mobilisation period.</li>
+                            <li>Ensures that employees are treated fairly and consistently.</li>
+                        </ul>
+
+                        <div class="pdf-toolbar">
+                            <span class="font-weight-bold text-dark">
+                                Reservist Policy Document (PDF)
+                            </span>
+                            <a href="assets/LUFT_Revservist_Policy.pdf" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-sm btn-outline-primary">
+                                Open / Download PDF &nearr;
+                            </a>
+                        </div>
+                        <iframe class="VetIframe" src="assets/LUFT_Revservist_Policy.pdf"
+                            title="Armed Forces Reservist Policy PDF"></iframe>
+                    </main>
+                </div>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- 4. Service Champion Training (Vet_SCT)         -->
+            <!-- ============================================== -->
+            <section class="sidenav" id="Vet_SCT">
+                <div class="LayoutParent">
+                    <div class="Layout1">
+                        <img class="Logo" src="assets/LUFT_Veterans.png" alt="Veterans Hub Logo">
+                        <h3>Service Champion Training</h3>
+                    </div>
+
+                    <nav class="Layout3" aria-label="Veterans Hub Navigation">
+                        <div class="nav-heading">Navigation Menu</div>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_LP');">Home</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_Status');">Recording
+                            Veteran Status in ESR</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_Policy');">Armed Forces
+                            Reservist Policy</button>
+                        <button type="button" class="btn-nav active" onclick="navigateToSection('Vet_SCT');">Service
+                            Champion Training</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_AFC');">Armed Forces
+                            Covenant &amp; ERS</button>
+                    </nav>
+
+                    <main class="Layout4">
+                        <h4>Service Champions Training</h4>
+                        <p>
+                            The Armed Forces Network offers an award-winning Service Champions Training that enables you
+                            to learn more about the Armed Forces community and become a Service Champion for your
+                            organisation. The Armed Forces community is made up of Serving Personnel (Regular or
+                            Reserve), Veterans/Former Service Personnel, and their immediate families or carers.
+                        </p>
+                        <p>
+                            The CPD-accredited training is delivered via MS Teams and is designed for people who are
+                            interested in helping their service/organisation to become more Armed Forces community
+                            aware. It is even more important for organisations to raise their awareness with the
+                            inclusion of the Armed Forces community in the NHS Constitution, the Armed Forces Act 2021
+                            Due Regard, and other key reports and research.
+                        </p>
+
+                        <div class="callout-box mt-4">
+                            <h5 class="font-weight-bold text-primary mb-2">Booking &amp; Course Dates</h5>
+                            <p class="mb-3">
+                                Find out upcoming dates, course schedules, and registration details on the official
+                                Armed Forces Network portal.
+                            </p>
+                            <a href="https://sussexarmedforcesnetwork.nhs.uk/events/service-champion-training/"
+                                target="_blank" rel="noopener noreferrer" class="btn-nhs-primary" role="button">
+                                View Service Champion Training Details &rarr;
+                            </a>
+                        </div>
+                    </main>
+                </div>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- 5. Armed Forces Covenant & ERS (Vet_AFC)       -->
+            <!-- ============================================== -->
+            <section class="sidenav" id="Vet_AFC">
+                <div class="LayoutParent">
+                    <div class="Layout1">
+                        <img class="Logo" src="assets/LUFT_Veterans.png" alt="Veterans Hub Logo">
+                        <h3>Armed Forces Covenant and Employee Recognition Scheme</h3>
+                    </div>
+
+                    <nav class="Layout3" aria-label="Veterans Hub Navigation">
+                        <div class="nav-heading">Navigation Menu</div>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_LP');">Home</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_Status');">Recording
+                            Veteran Status in ESR</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_Policy');">Armed Forces
+                            Reservist Policy</button>
+                        <button type="button" class="btn-nav" onclick="navigateToSection('Vet_SCT');">Service Champion
+                            Training</button>
+                        <button type="button" class="btn-nav active" onclick="navigateToSection('Vet_AFC');">Armed
+                            Forces Covenant &amp; ERS</button>
+                    </nav>
+
+                    <main class="Layout4">
+                        <h4>Armed Forces Covenant</h4>
+                        <p>
+                            The Armed Forces Covenant is a promise from the nation that those who serve or have served
+                            in the armed forces, and their families, are treated fairly.
+                        </p>
+                        <div class="mb-4">
+                            <a href="https://www.gov.uk/government/collections/armed-forces-covenant-supporting-information"
+                                target="_blank" rel="noopener noreferrer" class="btn-nhs-primary" role="button">
+                                Armed Forces Covenant: Guidance &amp; Support &rarr;
+                            </a>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <h4>Defence Employer Recognition Scheme (ERS)</h4>
+                        <p>
+                            The Employer Recognition Scheme (ERS) encourages employers to support defence personnel and
+                            inspire other organisations to do the same.
+                        </p>
+                        <div>
+                            <a href="https://www.gov.uk/government/publications/defence-employer-recognition-scheme"
+                                target="_blank" rel="noopener noreferrer" class="btn-nhs-primary" role="button">
+                                Defence Employer Recognition Scheme &rarr;
+                            </a>
+                        </div>
+                    </main>
+                </div>
+            </section>
+
+        </div>
+
+        <footer class="portal-footer">
+            <p class="mb-1">&copy; NHS Trust &mdash; Armed Forces Veterans &amp; Reservists Support Hub</p>
+            <p class="mb-0 text-muted small">Converted from ESR Portlet to Standalone Web Application</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        function hideElementsByClass(className) {
+            document.querySelectorAll("." + className).forEach(function (element) {
+                element.classList.remove("active-section");
+                element.style.display = "none";
+            });
+        }
+
+        function showElementsByID(IDName) {
+            var target = document.getElementById(IDName);
+            if (target) {
+                target.classList.add("active-section");
+                target.style.display = "block";
+            }
+        }
+
+        function navigateToSection(sectionId) {
+            hideElementsByClass("sidenav");
+            showElementsByID(sectionId);
+
+            // Sync active states on navigation buttons across all menus
+            document.querySelectorAll(".Layout3").forEach(function (nav) {
+                var buttons = nav.querySelectorAll(".btn-nav");
+                buttons.forEach(function (btn) {
+                    var onclickAttr = btn.getAttribute("onclick") || "";
+                    if (onclickAttr.indexOf(sectionId) !== -1) {
+                        btn.classList.add("active");
+                    } else {
+                        btn.classList.remove("active");
+                    }
+                });
+            });
+
+            // Update URL hash without forcing jump
+            if (history.pushState) {
+                history.pushState(null, null, "#" + sectionId);
+            } else {
+                location.hash = sectionId;
+            }
+
+            // Scroll to top of card on mobile
+            if (window.innerWidth <= 860) {
+                var card = document.querySelector(".portal-card");
+                if (card) {
+                    card.scrollIntoView({ behavior: "smooth" });
+                }
+            }
+        }
+
+        // ==========================================
+        // Dynamic ESR VPD & Personal Information Link
+        // ==========================================
+        var DEFAULT_VPD = "the-clatterbridge-cancer-centre-nhs-foundation-trust";
+
+        function getDetectedVpd() {
+            var urlParams = new URLSearchParams(window.location.search);
+            // 1. Direct query parameter: ?vpd=...
+            if (urlParams.get("vpd")) {
+                return urlParams.get("vpd").trim();
+            }
+            // 2. Auto-detect from ESR Referrer if linked from dashboard
+            if (document.referrer) {
+                var match = document.referrer.match(/\/dashboard\/web\/([^/?#]+)/i);
+                if (match && match[1] && match[1].toLowerCase() !== "guest") {
+                    return match[1].trim();
+                }
+            }
+            // 3. User saved preference in localStorage
+            try {
+                var stored = localStorage.getItem("esr_vpd");
+                if (stored) return stored.trim();
+            } catch (e) {}
+
+            // 4. Default Trust
+            return DEFAULT_VPD;
+        }
+
+        function updateEsrPersonalDetailsLink(vpd) {
+            if (!vpd) vpd = getDetectedVpd();
+            
+            var urlParams = new URLSearchParams(window.location.search);
+            var pAuth = urlParams.get("p_auth") || "";
+            var pAuthQuery = pAuth ? "&p_auth=" + encodeURIComponent(pAuth) : "";
+
+            var directUrl = "https://my.esr.nhs.uk/dashboard/web/" + encodeURIComponent(vpd) + 
+                "/dashboard?p_p_id=nhsesrglspersonalinformationportlet_WAR_nhsesrglspersonalinformationportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&_nhsesrglspersonalinformationportlet_WAR_nhsesrglspersonalinformationportlet_jakarta.portlet.action=getPersonalDetails" + pAuthQuery;
+
+            var btn = document.getElementById("VetPersonalDetails");
+            if (btn) {
+                btn.setAttribute("href", directUrl);
+            }
+
+            var displayEl = document.getElementById("currentVpdDisplay");
+            if (displayEl) {
+                displayEl.textContent = vpd;
+            }
+
+            var inputEl = document.getElementById("customVpdInput");
+            if (inputEl) {
+                inputEl.value = vpd;
+            }
+        }
+
+        function toggleVpdSelector() {
+            var box = document.getElementById("vpdSelectorBox");
+            if (box) {
+                box.style.display = (box.style.display === "none" || box.style.display === "") ? "block" : "none";
+            }
+        }
+
+        function saveCustomVpd() {
+            var inputEl = document.getElementById("customVpdInput");
+            if (inputEl && inputEl.value.trim()) {
+                var newVpd = inputEl.value.trim().toLowerCase().replace(/[^a-z0-9\-_]/g, "");
+                try {
+                    localStorage.setItem("esr_vpd", newVpd);
+                } catch (e) {}
+                updateEsrPersonalDetailsLink(newVpd);
+                toggleVpdSelector();
+            }
+        }
+
+        function setQuickVpd(presetVpd) {
+            try {
+                localStorage.setItem("esr_vpd", presetVpd);
+            } catch (e) {}
+            updateEsrPersonalDetailsLink(presetVpd);
+            toggleVpdSelector();
+        }
+
+        // Handle URL hash and dynamic VPD initialization on load
+        window.addEventListener("DOMContentLoaded", function () {
+            // Initialize dynamic ESR link
+            updateEsrPersonalDetailsLink();
+
+            var hash = window.location.hash.replace("#", "");
+            var validSections = ["Vet_LP", "Vet_Status", "Vet_Policy", "Vet_SCT", "Vet_AFC"];
+            if (hash && validSections.indexOf(hash) !== -1) {
+                navigateToSection(hash);
+            } else {
+                navigateToSection("Vet_LP");
+            }
+        });
+
+        // Handle back/forward browser buttons
+        window.addEventListener("popstate", function () {
+            var hash = window.location.hash.replace("#", "");
+            var validSections = ["Vet_LP", "Vet_Status", "Vet_Policy", "Vet_SCT", "Vet_AFC"];
+            if (hash && validSections.indexOf(hash) !== -1) {
+                navigateToSection(hash);
+            } else {
+                navigateToSection("Vet_LP");
+            }
+        });
+    </script>
+</body>
+
+</html>

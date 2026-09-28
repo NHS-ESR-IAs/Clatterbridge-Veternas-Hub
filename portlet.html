@@ -1,0 +1,428 @@
+<style>
+    .vetContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .vetImage {
+        height: auto;
+        max-width: auto;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 1rem;
+    }
+
+    .grid-container2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px));
+    }
+
+    .grid-item {
+        background-color: white;
+        color: black;
+        padding: 2px;
+    }
+
+    .ImgButtons {
+        width: 100px;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 100%;
+        Display: None;
+        position: fixed;
+        z-index: 10000;
+        top: 0;
+        left: 0;
+        border-style: solid;
+        background-color: white;
+        border-width: thin;
+        border-color: #41B6E6;
+        overflow-x: hidden;
+        transition: 0s;
+        padding-top: 60px;
+    }
+
+    .closebtn {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 12px;
+        color: #FFFFFF display: block;
+        transition: 0.3s;
+    }
+
+    .closebtn:hover {
+        color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0px;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    .Logo {
+        float: left;
+        padding-right: 10px;
+        padding-left: 10px;
+        max-height: 100px;
+    }
+
+    .Nav_Logo {
+        float: left;
+        padding: 10px;
+        max-height: 100px;
+    }
+
+    .NHSEButtons {
+        text-align: left;
+    }
+
+    .dashboard_img {
+        border-radius: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        padding: 5px;
+    }
+
+    .VetIframe {
+        position: relative;
+        height: 600px;
+        width: 100%;
+    }
+
+    .LayoutParent {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: repeat(4);
+        grid-column-gap: 2px;
+        grid-row-gap: 2px;
+    }
+
+    .Layout1 {
+        grid-area: 1 / 1 / 2 / 3;
+        padding: 10px;
+        background-color: #0072c6;
+        Color: white;
+    }
+
+    .Layout2 {
+        grid-area: 2 / 1 / 3 / 3;
+    }
+
+    .Layout3 {
+        grid-area: 3 / 1 / 4 / 2;
+        padding: 10px;
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    .Layout4 {
+        grid-area: 3 / 2 / 4 / 3;
+        padding: 10px;
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    .Layout4a {
+        grid-area: 3 / 2 / 4 / 3;
+        padding: 10px;
+        color: white;
+        background-color: #005eb8;
+    }
+
+    .Layout5 {
+        grid-area: 4 / 1 / 5 / 3;
+        padding: 10px;
+    }
+
+    @media (max-width: 600px) {
+        .LayoutParent {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            grid-column-gap: 2px;
+            grid-row-gap: 2px;
+        }
+
+        .Layout1 {
+            grid-area: 1 / 1 / 2 / 2;
+            padding: 10px;
+            background-color: #0072c6;
+            Color: white;
+        }
+
+        .Layout2 {
+            grid-area: 2 / 1 / 3 / 2;
+        }
+
+        .Layout3 {
+            grid-area: 4 / 1 / 5 / 2;
+            padding: 10px;
+        }
+
+        .Layout4 {
+            grid-area: 3 / 1 / 4 / 2;
+            padding: 10px;
+        }
+
+        .Layout4a {
+            grid-area: 4 / 1 / 5 / 2;
+            padding: 10px;
+            color: white;
+            background-color: #005eb8;
+        }
+
+        .Layout5 {
+            grid-area: 5 / 1 / 6 / 2;
+            padding: 10px;
+        }
+    }
+</style>
+
+<div class="vetContainer">
+    <div class="vetItem">
+        <image src="https://assets.codepen.io/8889025/LUFT_Veterans.png" class="responsive vetImage">
+    </div>
+    <div class="alert alert-primary">
+        <h4 style="text-align:center;">HM Forces Veterans</h4>
+        <p>As part of the NHS family, we recognise the invaluable skills and experiences that you, our colleagues who
+            are HM Forces Veterans, bring to our organisation.</p>
+    </div>
+    <div>
+
+        <a href="#" onclick="showElementsByID('Vet_LP');" class="btn btn-primary btn-block" role="button">HM Forces
+            Veterans</a>
+    </div>
+</div>
+
+<!-- Pages -->
+
+<!-- Veterans Landing Page (Vet_LP) -->
+
+<div class="sidenav" id="Vet_LP" style="">
+    <a class="closebtn" href="#" onclick="hideElementsByClass('sidenav');">×</a>
+    <div class="LayoutParent">
+        <div class="Layout1">
+            <img class="Logo" src="https://assets.codepen.io/8889025/LUFT_Veterans.png">
+            <h3>HM Forces Veterans</h3>
+        </div>
+
+        <div class="Layout3">
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_LP');">Home</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in
+                ESR</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Armed Forces Reservist
+                Policy</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Service Champion Training</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant and Employee
+                recognition Scheme</button>
+        </div>
+        <div class="Layout4">
+            <p>As part of the NHS family, we recognise the invaluable skills and experiences that you, our colleagues
+                who are HM Forces Veterans, bring to our organisation.</p>
+            <p>In this section of ESR you will find link and resources to support our Veterans colleagus and their
+                families.</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- Updating Veteran Status in ESR -->
+
+<div class="sidenav" id="Vet_Status" style="">
+    <a class="closebtn" href="#" onclick="hideElementsByClass('sidenav');">×</a>
+    <div class="LayoutParent">
+        <div class="Layout1">
+            <img class="Logo" src="https://assets.codepen.io/8889025/LUFT_Veterans.png">
+            <h3>Recording Veteran Status in ESR</h3>
+        </div>
+
+        <div class="Layout3">
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_LP');">Home</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in
+                ESR</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Armed Forces Reservist
+                Policy</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Service Champion Training</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant and Employee
+                recognition Scheme</button>
+        </div>
+        <div class="Layout4">
+            <p>In order for us to provide the support you need where necessary, we would appreciate it if you take the
+                time to record your Veterans status on the Wellbeing Form.</p>
+            <p>This also applies to Armed Forces Family Members, Armed Forces Reservists and Cadet Armed Forces
+                Volunteers.</p>
+            <p>Click the button below to open the Personal Information form and select the Wellbeing tab</p>
+            <a class="btn btn-primary btn-block" href="" id="VetPersonalDetails" role="button">Personal Information
+                Form</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Reservists Policy -->
+
+<div class="sidenav" id="Vet_Policy" style="">
+    <a class="closebtn" href="#" onclick="hideElementsByClass('sidenav');">×</a>
+    <div class="LayoutParent">
+        <div class="Layout1">
+            <img class="Logo" src="https://assets.codepen.io/8889025/LUFT_Veterans.png">
+            <h3>Armed Forces Reservist Policy</h3>
+        </div>
+
+        <div class="Layout3">
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_LP');">Home</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in
+                ESR</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Armed Forces Reservist
+                Policy</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Service Champion Training</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant and Employee
+                recognition Scheme</button>
+        </div>
+        <div class="Layout4">
+            <p>This policy is provided so that Trust employees that are members of the Armed Forces Reserves or any
+                staff that want to become a reservist are supported to do so.</p>
+            <ul>
+                <li>This policy ensures that staff are supported to carry out reservist duties.
+                <li>Managers are equipped to support requests from staff to join reserve forces and support staff where
+                    possible during the mobilisation period.
+                <li>Ensure that employees are treated fairly and consistently
+            </ul>
+            <iframe class="VetIframe" src="https://assets.codepen.io/8889025/LUFT_Revservist_Policy.pdf"></iframe>
+        </div>
+
+    </div>
+</div>
+<!-- Service Champion Training -->
+
+<div class="sidenav" id="Vet_SCT" style="">
+    <a class="closebtn" href="#" onclick="hideElementsByClass('sidenav');">×</a>
+    <div class="LayoutParent">
+        <div class="Layout1">
+            <img class="Logo" src="https://assets.codepen.io/8889025/LUFT_Veterans.png">
+            <h3>Service Champion Training</h3>
+        </div>
+
+        <div class="Layout3">
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_LP');">Home</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in
+                ESR</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Armed Forces Reservist
+                Policy</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Service Champion Training</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant and Employee
+                recognition Scheme</button>
+        </div>
+        <div class="Layout4">
+            <p>The Armed Forces network offer an award-winning Service Champions Training enables you to learn more
+                about the Armed Forces community and become a Service Champion for your organisation. The Armed Forces
+                community is made up of Serving Personnel (Regular or Reserve), Veterans/Former Service Personnel, and
+                their immediate families or carers.</p>
+
+            <p>The CPD accredited training is delivered via MS Teams and it is designed for people who are interested in
+                helping their service/organisation, to become more Armed Forces community aware. It is even more
+                important for organisations to raise their awareness with the inclusion of the Armed Forces community in
+                the NHS Constitution, the Armed Forces Act 2021 Due Regard and other key reports and research.</p>
+
+            <p>For more information on this offering (including times, dates, and booking form) <a
+                    href="https://sussexarmedforcesnetwork.nhs.uk/events/service-champion-training/"
+                    target="_blank">please click here</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Armed Forces Covenant and Employee recognition Scheme -->
+
+<div class="sidenav" id="Vet_AFC" style="">
+    <a class="closebtn" href="#" onclick="hideElementsByClass('sidenav');">×</a>
+    <div class="LayoutParent">
+        <div class="Layout1">
+            <img class="Logo" src="https://assets.codepen.io/8889025/LUFT_Veterans.png">
+            <h3>Armed Forces Covenant and Employee recognition Scheme</h3>
+        </div>
+
+        <div class="Layout3">
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_LP');">Home</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in
+                ESR</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Armed Forces Reservist
+                Policy</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Service Champion Training</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant and Employee
+                recognition Scheme</button>
+        </div>
+        <div class="Layout4">
+            <p>The Armed Forces Covenant is a promise from the nation that those who serve or have served in the armed
+                forces, and their families, are treated fairly.</p>
+
+            <a href="https://www.gov.uk/government/collections/armed-forces-covenant-supporting-information"
+                target="_blank" class="btn btn-primary btn-block" role="button">Armed Forces Covenant: guidance and
+                support</a>
+
+            <p>The Employer Recognition Scheme (ERS) encourages employers to support defence and inspire other
+                organisations to do the same.</p>
+            <a href="https://www.gov.uk/government/publications/defence-employer-recognition-scheme" target="_blank"
+                class="btn btn-primary btn-block" role="button">Defence Employer Recognition Scheme</a>
+        </div>
+
+    </div>
+</div>
+<!-- End of Pages -->
+
+</div>
+
+<script>
+    function hideElementsByClass(className) {
+        document.querySelectorAll("." + className).forEach(function (element) {
+            element.style.display = "none";
+        });
+    }
+
+    function showElementsByID(IDName) {
+        document.querySelectorAll("#" + IDName).forEach(function (element) {
+            element.style.display = "inline";
+        });
+    }
+    document.onreadystatechange = function () {
+        if (document.readyState == "complete") {
+            var contactWidgetLink = document.querySelector("#mpi_ContactModal").getAttribute("href");
+            document.getElementById("VetPersonalDetails").setAttribute("href", contactWidgetLink);
+        }
+    }
+</script>
