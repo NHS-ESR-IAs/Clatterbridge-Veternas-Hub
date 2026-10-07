@@ -33,7 +33,7 @@
     .sidenav {
         height: 100%;
         width: 100%;
-        Display: None;
+        display: none;
         position: fixed;
         z-index: 10000;
         top: 0;
@@ -51,7 +51,8 @@
         padding: 8px 8px 8px 32px;
         text-decoration: none;
         font-size: 12px;
-        color: #FFFFFF display: block;
+        color: #FFFFFF;
+        display: block;
         transition: 0.3s;
     }
 
@@ -111,7 +112,7 @@
         grid-area: 1 / 1 / 2 / 3;
         padding: 10px;
         background-color: #0072c6;
-        Color: white;
+        color: white;
     }
 
     .Layout2 {
@@ -157,7 +158,7 @@
             grid-area: 1 / 1 / 2 / 2;
             padding: 10px;
             background-color: #0072c6;
-            Color: white;
+            color: white;
         }
 
         .Layout2 {
@@ -190,7 +191,7 @@
 
 <div class="vetContainer">
     <div class="vetItem">
-        <image src="https://assets.codepen.io/8889025/LUFT_Veterans.png" class="responsive vetImage">
+        <img src="assets/Veterans.jpg" class="responsive vetImage" alt="Veterans Hub Logo">
     </div>
     <div class="alert alert-primary">
         <h4 style="text-align:center;">HM Forces Veterans</h4>
@@ -198,214 +199,206 @@
             are HM Forces Veterans, bring to our organisation.</p>
     </div>
     <div>
-
-        <a href="#" onclick="showElementsByID('Vet_LP');" class="btn btn-primary btn-block" role="button">HM Forces
-            Veterans</a>
+        <a href="#" onclick="showElementsByID('Vet_LP');" class="btn btn-primary btn-block" role="button">HM Forces Veterans Hub</a>
     </div>
 </div>
 
 <!-- Pages -->
 
 <!-- Veterans Landing Page (Vet_LP) -->
-
-<div class="sidenav" id="Vet_LP" style="">
+<div class="sidenav" id="Vet_LP">
     <a class="closebtn" href="#" onclick="hideElementsByClass('sidenav');">×</a>
     <div class="LayoutParent">
         <div class="Layout1">
-            <img class="Logo" src="https://assets.codepen.io/8889025/LUFT_Veterans.png">
+            <img class="Logo" src="assets/Veterans.jpg" alt="Veterans Hub Logo">
             <h3>HM Forces Veterans</h3>
         </div>
 
         <div class="Layout3">
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
                 onclick="hideElementsByClass('sidenav');showElementsByID('Vet_LP');">Home</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in
-                ESR</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Armed Forces Reservist
-                Policy</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Service Champion Training</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant and Employee
-                recognition Scheme</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in ESR</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Special Leave Policy</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Armed Forces Health Training (Module 1)</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_StaffNetwork');">Armed Forces Staff Network</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant &amp; ERS</button>
         </div>
         <div class="Layout4">
             <p>As part of the NHS family, we recognise the invaluable skills and experiences that you, our colleagues
                 who are HM Forces Veterans, bring to our organisation.</p>
-            <p>In this section of ESR you will find link and resources to support our Veterans colleagus and their
-                families.</p>
+            <p>In this section of ESR you will find links and resources to support our Veterans colleagues and their families.</p>
         </div>
-
     </div>
 </div>
 
 <!-- Updating Veteran Status in ESR -->
-
-<div class="sidenav" id="Vet_Status" style="">
+<div class="sidenav" id="Vet_Status">
     <a class="closebtn" href="#" onclick="hideElementsByClass('sidenav');">×</a>
     <div class="LayoutParent">
         <div class="Layout1">
-            <img class="Logo" src="https://assets.codepen.io/8889025/LUFT_Veterans.png">
+            <img class="Logo" src="assets/Veterans.jpg" alt="Veterans Hub Logo">
             <h3>Recording Veteran Status in ESR</h3>
         </div>
 
         <div class="Layout3">
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
                 onclick="hideElementsByClass('sidenav');showElementsByID('Vet_LP');">Home</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in
-                ESR</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Armed Forces Reservist
-                Policy</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Service Champion Training</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant and Employee
-                recognition Scheme</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in ESR</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Special Leave Policy</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Armed Forces Health Training (Module 1)</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_StaffNetwork');">Armed Forces Staff Network</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant &amp; ERS</button>
         </div>
         <div class="Layout4">
             <p>In order for us to provide the support you need where necessary, we would appreciate it if you take the
                 time to record your Veterans status on the Wellbeing Form.</p>
-            <p>This also applies to Armed Forces Family Members, Armed Forces Reservists and Cadet Armed Forces
-                Volunteers.</p>
-            <p>Click the button below to open the Personal Information form and select the Wellbeing tab</p>
-            <a class="btn btn-primary btn-block" href="" id="VetPersonalDetails" role="button">Personal Information
-                Form</a>
+            <p>This also applies to Armed Forces Family Members, Armed Forces Reservists and Cadet Armed Forces Volunteers.</p>
+            <p>Click the button below to open My ESR and navigate to Personal Information -> Wellbeing tab.</p>
+            <a class="btn btn-primary btn-block" href="https://my.esr.nhs.uk/dashboard/" target="_blank" role="button">Open My ESR Dashboard</a>
         </div>
-
     </div>
 </div>
 
-<!-- Reservists Policy -->
-
-<div class="sidenav" id="Vet_Policy" style="">
+<!-- Special Leave Policy -->
+<div class="sidenav" id="Vet_Policy">
     <a class="closebtn" href="#" onclick="hideElementsByClass('sidenav');">×</a>
     <div class="LayoutParent">
         <div class="Layout1">
-            <img class="Logo" src="https://assets.codepen.io/8889025/LUFT_Veterans.png">
-            <h3>Armed Forces Reservist Policy</h3>
+            <img class="Logo" src="assets/Veterans.jpg" alt="Veterans Hub Logo">
+            <h3>Special Leave Policy</h3>
         </div>
 
         <div class="Layout3">
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
                 onclick="hideElementsByClass('sidenav');showElementsByID('Vet_LP');">Home</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in
-                ESR</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Armed Forces Reservist
-                Policy</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Service Champion Training</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant and Employee
-                recognition Scheme</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in ESR</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Special Leave Policy</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Armed Forces Health Training (Module 1)</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_StaffNetwork');">Armed Forces Staff Network</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant &amp; ERS</button>
         </div>
         <div class="Layout4">
-            <p>This policy is provided so that Trust employees that are members of the Armed Forces Reserves or any
-                staff that want to become a reservist are supported to do so.</p>
+            <p>The Trust's Armed Forces policy is replaced with our Special Leave Policy (QP3636 / HR04 v4.3) while our dedicated Armed Forces Policy is being finalized.</p>
             <ul>
-                <li>This policy ensures that staff are supported to carry out reservist duties.
-                <li>Managers are equipped to support requests from staff to join reserve forces and support staff where
-                    possible during the mobilisation period.
-                <li>Ensure that employees are treated fairly and consistently
+                <li>Grants 10 days' paid leave per year for Reservists and Cadet Force Adult Volunteers for required training.</li>
+                <li>Provides support and job protection during active service mobilisation.</li>
+                <li>Includes terms for Emergency Domestic, Carers, Bereavement, and Civic duties leave.</li>
             </ul>
-            <iframe class="VetIframe" src="https://assets.codepen.io/8889025/LUFT_Revservist_Policy.pdf"></iframe>
+            <iframe class="VetIframe" src="assets/QP3636_Special Leave Policy.pdf" title="Special Leave Policy"></iframe>
         </div>
-
-    </div>
-</div>
-<!-- Service Champion Training -->
-
-<div class="sidenav" id="Vet_SCT" style="">
-    <a class="closebtn" href="#" onclick="hideElementsByClass('sidenav');">×</a>
-    <div class="LayoutParent">
-        <div class="Layout1">
-            <img class="Logo" src="https://assets.codepen.io/8889025/LUFT_Veterans.png">
-            <h3>Service Champion Training</h3>
-        </div>
-
-        <div class="Layout3">
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_LP');">Home</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in
-                ESR</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Armed Forces Reservist
-                Policy</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Service Champion Training</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant and Employee
-                recognition Scheme</button>
-        </div>
-        <div class="Layout4">
-            <p>The Armed Forces network offer an award-winning Service Champions Training enables you to learn more
-                about the Armed Forces community and become a Service Champion for your organisation. The Armed Forces
-                community is made up of Serving Personnel (Regular or Reserve), Veterans/Former Service Personnel, and
-                their immediate families or carers.</p>
-
-            <p>The CPD accredited training is delivered via MS Teams and it is designed for people who are interested in
-                helping their service/organisation, to become more Armed Forces community aware. It is even more
-                important for organisations to raise their awareness with the inclusion of the Armed Forces community in
-                the NHS Constitution, the Armed Forces Act 2021 Due Regard and other key reports and research.</p>
-
-            <p>For more information on this offering (including times, dates, and booking form) <a
-                    href="https://sussexarmedforcesnetwork.nhs.uk/events/service-champion-training/"
-                    target="_blank">please click here</a>
-        </div>
-
     </div>
 </div>
 
-<!-- Armed Forces Covenant and Employee recognition Scheme -->
-
-<div class="sidenav" id="Vet_AFC" style="">
+<!-- Armed Forces Health Training (Module 1) -->
+<div class="sidenav" id="Vet_SCT">
     <a class="closebtn" href="#" onclick="hideElementsByClass('sidenav');">×</a>
     <div class="LayoutParent">
         <div class="Layout1">
-            <img class="Logo" src="https://assets.codepen.io/8889025/LUFT_Veterans.png">
-            <h3>Armed Forces Covenant and Employee recognition Scheme</h3>
+            <img class="Logo" src="assets/Veterans.jpg" alt="Veterans Hub Logo">
+            <h3>Armed Forces Health Training (Module 1)</h3>
         </div>
 
         <div class="Layout3">
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
                 onclick="hideElementsByClass('sidenav');showElementsByID('Vet_LP');">Home</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in
-                ESR</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Armed Forces Reservist
-                Policy</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Service Champion Training</button>
-            <button type="button" class="btn btn-primary btn-block d-block w-100"
-                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant and Employee
-                recognition Scheme</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in ESR</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Special Leave Policy</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Armed Forces Health Training (Module 1)</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_StaffNetwork');">Armed Forces Staff Network</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant &amp; ERS</button>
         </div>
         <div class="Layout4">
-            <p>The Armed Forces Covenant is a promise from the nation that those who serve or have served in the armed
-                forces, and their families, are treated fairly.</p>
+            <p>The NHS Armed Forces healthcare training and education programme is being delivered across England, with a dedicated Veterans Covenant Healthcare Alliance (VCHA) trainer for each region.</p>
+            <p>This programme will support the NHS wide system to demonstrate that the NHS and their partners receive the appropriate training and education required to ensure they can develop a skilled, educated, and inclusive workforce.</p>
+            <a href="https://armedforceshealthtraining.nhs.uk/ntep-modules/ntep-module-1/" target="_blank" class="btn btn-primary btn-block">Access Armed Forces Health Training (Module 1)</a>
+        </div>
+    </div>
+</div>
 
-            <a href="https://www.gov.uk/government/collections/armed-forces-covenant-supporting-information"
-                target="_blank" class="btn btn-primary btn-block" role="button">Armed Forces Covenant: guidance and
-                support</a>
-
-            <p>The Employer Recognition Scheme (ERS) encourages employers to support defence and inspire other
-                organisations to do the same.</p>
-            <a href="https://www.gov.uk/government/publications/defence-employer-recognition-scheme" target="_blank"
-                class="btn btn-primary btn-block" role="button">Defence Employer Recognition Scheme</a>
+<!-- Armed Forces Staff Network -->
+<div class="sidenav" id="Vet_StaffNetwork">
+    <a class="closebtn" href="#" onclick="hideElementsByClass('sidenav');">×</a>
+    <div class="LayoutParent">
+        <div class="Layout1">
+            <img class="Logo" src="assets/Veterans.jpg" alt="Veterans Hub Logo">
+            <h3>Armed Forces Staff Network</h3>
         </div>
 
+        <div class="Layout3">
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_LP');">Home</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in ESR</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Special Leave Policy</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Armed Forces Health Training (Module 1)</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_StaffNetwork');">Armed Forces Staff Network</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant &amp; ERS</button>
+        </div>
+        <div class="Layout4">
+            <p>Whether you are a Veteran, Reservist, member of the Armed Forces Community, or have family/friend connections, join our Armed Forces Staff Network to chat to others in the community in a friendly, welcoming space. The group currently meets online once a month.</p>
+            <p>Please email network chair Simon Glazebrook (<a href="mailto:simon.glazebrook@nhs.net">simon.glazebrook@nhs.net</a>) for more information about the next meeting.</p>
+            <a href="https://nhs.sharepoint.com/sites/REN_CCC_HUB/Staff_Hub/SitePages/Veterans-and-Armed-Forces.aspx" target="_blank" class="btn btn-primary btn-block">Armed Forces Staff Network Page</a>
+        </div>
+    </div>
+</div>
+
+<!-- Armed Forces Covenant and Employee Recognition Scheme -->
+<div class="sidenav" id="Vet_AFC">
+    <a class="closebtn" href="#" onclick="hideElementsByClass('sidenav');">×</a>
+    <div class="LayoutParent">
+        <div class="Layout1">
+            <img class="Logo" src="assets/Veterans.jpg" alt="Veterans Hub Logo">
+            <h3>Armed Forces Covenant and Employee Recognition Scheme</h3>
+        </div>
+
+        <div class="Layout3">
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_LP');">Home</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Status');">Recording Veteran Status in ESR</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_Policy');">Special Leave Policy</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_SCT');">Armed Forces Health Training (Module 1)</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_StaffNetwork');">Armed Forces Staff Network</button>
+            <button type="button" class="btn btn-primary btn-block d-block w-100 mb-2"
+                onclick="hideElementsByClass('sidenav');showElementsByID('Vet_AFC');">Armed Forces Covenant &amp; ERS</button>
+        </div>
+        <div class="Layout4">
+            <p>The Armed Forces Covenant is a promise from the nation that those who serve or have served in the armed forces, and their families, are treated fairly.</p>
+            <a href="https://www.gov.uk/government/collections/armed-forces-covenant-supporting-information" target="_blank" class="btn btn-primary btn-block mb-3" role="button">Armed Forces Covenant: guidance and support</a>
+
+            <p>The Employer Recognition Scheme (ERS) encourages employers to support defence and inspire other organisations to do the same.</p>
+            <a href="https://www.gov.uk/government/publications/defence-employer-recognition-scheme" target="_blank" class="btn btn-primary btn-block" role="button">Defence Employer Recognition Scheme</a>
+        </div>
     </div>
 </div>
 <!-- End of Pages -->
-
-</div>
 
 <script>
     function hideElementsByClass(className) {
@@ -418,11 +411,5 @@
         document.querySelectorAll("#" + IDName).forEach(function (element) {
             element.style.display = "inline";
         });
-    }
-    document.onreadystatechange = function () {
-        if (document.readyState == "complete") {
-            var contactWidgetLink = document.querySelector("#mpi_ContactModal").getAttribute("href");
-            document.getElementById("VetPersonalDetails").setAttribute("href", contactWidgetLink);
-        }
     }
 </script>
