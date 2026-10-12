@@ -1,4 +1,4 @@
-# HM Forces Veterans Hub &mdash; Clatterbridge
+# HM Armed Forces and Veterans Hub &mdash; Clatterbridge
 
 A standalone web application and ESR signposting portlet providing information and resources to support NHS colleagues who are HM Forces Veterans, Reservists, Cadet Adult Volunteers, and Armed Forces family members.
 
